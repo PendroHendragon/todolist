@@ -22,15 +22,24 @@ ul li{
     display: flex;
     flex-direction: column;
     margin: auto;
-    width: 400px;
+    width: 600px;
 }
 .button-controler button{
     margin-top: 10px;
+}
+#mytable{
+    text-align: center;
+    width: 600px;
+    margin: auto auto 10px auto !important;
 }
 .button-controler{
     text-align: center;
 }
 #tasks{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
     text-align: center;
     margin-top: 10px;
 }
@@ -42,9 +51,8 @@ ul li{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
 }
 .task h4, .task p, .task button{
-    margin: 4px;
+    margin: 6px;
 
 }

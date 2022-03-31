@@ -27,34 +27,20 @@
             <div>
                 <div class="controls">
                     <label>Task</label>
-                    <input type="text">
-                    <label>Date to be done</label>
-                    <input type="date">
+                    <input type="text" placeholder="My task" id="input">
 
                 </div>
                 <div class="button-controler">
-                    <button type="button" class="btn btn-success">Add task</button>
+                    <button type="button" class="btn btn-success" id="btn">Add task</button>
 
                 </div>
             </div>
 
         </div>
         <div id="tasks">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <td>Task</td>
-                        <td>Data de criacao</td>
-                        <td>Data para completar</td>
-                        <td>Action</td>
-                    </tr>
-                </thead>
-            </table>
             <div class="task">
                 
                 <h4>Task text</h4>
-                <p>30-03-2022</p>
-                <p>15-04-2022</p>
                 <button class="btn">Complete task</button>
             </div>
 
@@ -62,8 +48,6 @@
         <div id="complete">
             <div class="task">
                 <h4>Task text</h4>
-                <p>30-03-2022</p>
-                <p>15-04-2022</p>
                 <button class="btn">Complete task</button>
             </div>
 
@@ -72,7 +56,7 @@
     </div>
     
 
-    <script src="./index.js"></script>
+    <script src="./index.mjs" type="module"></script>
     <script src="./assets/js/app.js"></script>
     
 </body>
