@@ -4,8 +4,8 @@ import task from './assets/components/task.mjs';
 
 function createDatabase(databaseName){
     let data = window.localStorage;
-    let array = {};
-    return data.setItem(`${databaseName}`,array);
+    let array = [];
+    return data.setItem(`${databaseName}`, JSON.stringify(array));
 }
 
 function dbExists(databaseName){
@@ -35,16 +35,18 @@ if(!dbExists('dataStatus')){
 
 let storage = window.localStorage;
 function saveData(idTask,dataTask,dataStatus){
+    
     let id = JSON.parse(storage.getItem('dataId'));
     let task = JSON.parse(storage.getItem('dataTask'));
     let status = JSON.parse(storage.getItem('dataStatus'));
-    
+    console.log(task);
+
+
     id.push(idTask);
-
     task.push(dataTask);
+    status.push(dataStatus)
 
-    status.push(dataStatus);
-
+    
     let lastId = JSON.stringify(id);
     let lastTask = JSON.stringify(task);
     let lastStatus = JSON.stringify(status);
@@ -60,19 +62,22 @@ function saveData(idTask,dataTask,dataStatus){
 let tasks = document.querySelector('#tasks');
 function loadData(){
     let db = window.localStorage;
+    
+    
+    
     let imcomplete = document.querySelector('#tasks');
     let complete = document.querySelector('#complete');
-    let id = JSON.parse(db.getItem('dataId'));
-    let taskk = JSON.parse(db.getItem('dataTask'));
-    let status1 = db.getItem('dataStatus');
-    let statuss = JSON.parse(status1);
-    console.log(statuss);
-    if(db.getItem('dataId')!=null){
-        for(let i=0;i<statuss.length;i++){
-            if(statuss[i]=='completed'){
-                complete.appendChild(task(id[i],taskk[i],statuss[i]))
+    let id = JSON.parse(storage.getItem('dataId'));
+    let taskk = JSON.parse(storage.getItem('dataTask'));
+    let status1 = JSON.parse(storage.getItem('dataStatus'));
+    
+    
+    if(db.getItem('dataId') != ""){
+        for(let i=0;i<status1.length;i++){
+            if(status1[i]=='completed'){
+                complete.appendChild(task(id[i],taskk[i],status1[i]))
             }else{
-                imcomplete.appendChild(task(id[i],taskk[i],statuss[i]));
+                imcomplete.appendChild(task(id[i],taskk[i],status1[i]));
             }
         }
 
@@ -92,15 +97,20 @@ button.addEventListener('click', function(){
     let input = document.querySelector('#input');
     
     if(input.value != ""){
+        
         let dataId = JSON.parse(storage.getItem('dataId')).length;
+        console.log(dataId);
         let dataTask = input.value;
+        console.log(dataTask);
         let dataStatus = 'incomplete';
         saveData(dataId,dataTask,dataStatus);
-        loadData();
         input.value = "";
 
     }
+    window.location.reload();
     
     
 });
 loadData();
+
+

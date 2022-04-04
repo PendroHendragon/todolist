@@ -35,10 +35,7 @@ function task(id,task,status){
         let complete = document.querySelector('#complete');
         dataStatus[idTask] = 'completed';
         storage.setItem('dataStatus',JSON.stringify(dataStatus));
-        div.appendChild(p);
-        div.removeChild(button);
-        
-        complete.appendChild(div);
+        window.location.reload();
         // console.log(div);
         // button.parentElement.remove();
     });
