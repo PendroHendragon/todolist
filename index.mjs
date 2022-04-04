@@ -98,4 +98,6 @@ button.addEventListener('click', function(){
     
 });
 
-loadData();
+if(storage.getItem('dataId')!=null){
+    loadData();
+}
