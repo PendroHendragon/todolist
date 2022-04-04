@@ -4,7 +4,7 @@ import task from './assets/components/task.mjs';
 
 function createDatabase(databaseName){
     let data = window.localStorage;
-    let array = [];
+    let array = {};
     return data.setItem(`${databaseName}`,array);
 }
 
