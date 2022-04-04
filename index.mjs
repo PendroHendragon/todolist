@@ -66,13 +66,18 @@ function loadData(){
     let status1 = db.getItem('dataStatus');
     let statuss = JSON.parse(status1);
     console.log(statuss);
-    for(let i=0;i<statuss.length;i++){
-        if(statuss[i]=='completed'){
-            complete.appendChild(task(id[i],taskk[i],statuss[i]))
-        }else{
-            imcomplete.appendChild(task(id[i],taskk[i],statuss[i]));
+    if(db.getItem('dataId')!=null){
+        for(let i=0;i<statuss.length;i++){
+            if(statuss[i]=='completed'){
+                complete.appendChild(task(id[i],taskk[i],statuss[i]))
+            }else{
+                imcomplete.appendChild(task(id[i],taskk[i],statuss[i]));
+            }
         }
+
     }
+    
+    
     
 
 }
@@ -97,7 +102,4 @@ button.addEventListener('click', function(){
     
     
 });
-
-if(storage.getItem('dataId')!=null){
-    loadData();
-}
+loadData();
