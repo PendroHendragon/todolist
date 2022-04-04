@@ -1,9 +1,11 @@
 
-function task(task){
+function task(id,task,status){
     
     // const template = `<div class='task'><h4>${task} </h4><button class='btn' onclick=this.parentElement.remove(this)>Complete task</button></div>`;
     // return template;
-
+    let storage = window.localStorage;
+    let dataStatus = JSON.parse(storage.getItem('dataStatus'));
+    let idTask = id;
     let text = document.createTextNode(task);
 
     let div = document.createElement('div');
@@ -18,10 +20,21 @@ function task(task){
     button.classList.add('btn');
     button.appendChild(text2);
     div.appendChild(h4);
-    div.appendChild(button);
+    if(status == 'completed'){
+        let p2 = document.createElement('p');
+        let textp2 = document.createTextNode(status);
+        p2.appendChild(textp2);
+        div.appendChild(p2);
+
+    }else{
+        div.appendChild(button);
+    }
+    
 
     button.addEventListener('click',function(){
         let complete = document.querySelector('#complete');
+        dataStatus[idTask] = 'completed';
+        storage.setItem('dataStatus',JSON.stringify(dataStatus));
         div.appendChild(p);
         div.removeChild(button);
         
